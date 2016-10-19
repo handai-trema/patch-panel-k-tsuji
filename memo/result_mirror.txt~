@@ -1,0 +1,17 @@
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ bin/patch_panel create 0xabc 1 2
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ bin/patch_panel mirror 0xabc 1 3
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ bin/patch_panel dump 0xabcPatches:
+	1<->2
+Mirrors:
+	1->3
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ trema dump_flows patch_panelNXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=20.942s, table=0, n_packets=0, n_bytes=0, idle_age=20, priority=0,in_port=1 actions=output:2,output:3
+ cookie=0x0, duration=31.907s, table=0, n_packets=0, n_bytes=0, idle_age=31, priority=0,in_port=2 actions=output:1
+
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ bin/patch_panel delete_mirror 0xabc 1 3
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ trema dump_flows patch_panelNXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=79.282s, table=0, n_packets=0, n_bytes=0, idle_age=79, priority=0,in_port=1 actions=output:2
+ cookie=0x0, duration=244.282s, table=0, n_packets=0, n_bytes=0, idle_age=244, priority=0,in_port=2 actions=output:1
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ bin/patch_panel delete_mirror 0xabc 1 2
+[1, 2] does NOT exist in Mirrors.
+

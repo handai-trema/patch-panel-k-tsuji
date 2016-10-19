@@ -1,0 +1,9 @@
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ bin/patch_panel dump 0xabcPatches:
+	1<->2
+Mirrors:
+	1->3
+ensyuu2@ensyuu2-VirtualBox:~/workspace4github/patch-panel-k-tsuji$ bin/patch_panel dump 0xabcPatches:
+	1<->2
+Mirrors:
+	1->3
+
