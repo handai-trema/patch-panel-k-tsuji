@@ -41,5 +41,46 @@ module PatchPanelApp
     end
   end
 
+  desc 'Create a new mirror'
+  arg_name 'dpid port#1 port#2'
+  command :mirror do |c|
+    c.desc 'Location to find socket files'
+    c.flag [:S, :socket_dir], default_value: Trema::DEFAULT_SOCKET_DIR
+
+    c.action do |_global_options, options, args|
+      dpid = args[0].hex
+      port1 = args[1].to_i
+      port2 = args[2].to_i
+      Trema.trema_process('PatchPanel', options[:socket_dir]).controller.
+        create_mirror(dpid, port1, port2)
+    end
+  end
+
+  desc 'Delete a mirror'
+  arg_name 'dpid port#1 port#2'
+  command :delete_mirror do |c|
+    c.desc 'Location to find socket files'
+    c.flag [:S, :socket_dir], default_value: Trema::DEFAULT_SOCKET_DIR
+
+    c.action do |_global_options, options, args|
+      dpid = args[0].hex
+      port1 = args[1].to_i
+      port2 = args[2].to_i
+      puts Trema.trema_process('PatchPanel', options[:socket_dir]).controller.delete_mirror(dpid, port1, port2)
+    end
+  end
+
+  desc 'Dump all patches and mirrors'
+  arg_name 'dpid'
+  command :dump do |c|
+    c.desc 'Location to find socket files'
+    c.flag [:S, :socket_dir], default_value: Trema::DEFAULT_SOCKET_DIR
+
+    c.action do |_global_options, options, args|
+      dpid = args[0].hex
+      puts Trema.trema_process('PatchPanel', options[:socket_dir]).controller.dump(dpid)
+    end
+  end
+
   exit run(ARGV)
 end
