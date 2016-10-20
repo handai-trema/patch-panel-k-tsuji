@@ -31,12 +31,12 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 [lib/patch_panel.rb](lib/patch_panel.rb)
 における`create_mirror`メソッドを呼び出し，下記の順で処理する．
 1. `add_mirror_entry`メソッドを呼び出す．
-<p>フローテーブルにMirroringを実現するルールを追加する．
-具体的なルールは，port_monitorが所属するパッチ`port_out`を`@patches`から取得し，`port_monitor`からのPacketInに対しては`port_out`および`port_mirror`へフォワーディングする．</p>
+フローテーブルにMirroringを実現するルールを追加する．
+具体的なルールは，port_monitorが所属するパッチ`port_out`を`@patches`から取得し，`port_monitor`からのPacketInに対しては`port_out`および`port_mirror`へフォワーディングする．<br>
 2. `@mirrors`へミラーリングを記録する．
 [lib/patch_panel.rb](lib/patch_panel.rb)
 の`start`メソッドにおいてインスタンス変数`@mirrors`（ハッシュ）を宣言し，`@patches`
-と同様に，`add_mirror_entry`メソッドによって実現したミラーをリスト構造として記録する．
+と同様に，`add_mirror_entry`メソッドによって実現したミラーをリスト構造として記録する．<br>
 
 ###② パッチとポートミラーリングの一覧
 リンクID（`dpid`）先にあるスイッチにおいて，
