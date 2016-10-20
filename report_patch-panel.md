@@ -1,6 +1,6 @@
 #Report: patch-panel
 Submission: &nbsp; Oct./20/2016<br>
-Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
+Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 
 
 
@@ -39,7 +39,14 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 と同様に，`add_mirror_entry`メソッドによって実現したミラーをリスト構造として記録する．<br>
 
 ###② パッチとポートミラーリングの一覧
-リンクID（`dpid`）先にあるスイッチにおいて，
+リンクID（`dpid`）先にあるスイッチにおけるパッチおよびミラーの一覧を表示する．
+コマンドは下記の通りである．<br>
+```
+./bin/patch_panel dump dpid
+```
+このコマンドは
+[lib/patch_panel.rb](lib/patch_panel.rb)
+における`dump`メソッドを呼び出し，下記の順で処理する．<br>
 
 
 ##関連リンク
