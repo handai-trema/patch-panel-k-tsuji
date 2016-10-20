@@ -94,8 +94,23 @@ cookie=0x0, duration=31.907s, table=0, n_packets=0, n_bytes=0, idle_age=31, prio
 cookie=0x0, duration=79.282s, table=0, n_packets=0, n_bytes=0, idle_age=79, priority=0,in_port=1 actions=output:2
 cookie=0x0, duration=244.282s, table=0, n_packets=0, n_bytes=0, idle_age=244, priority=0,in_port=2 actions=output:1
 ```
-####３．`@mirrors`が保持するミラーリング記録を削除するする．
-
+####３．`@mirrors`が保持するミラーリング記録を削除する．
+生成済みのミラーリングはインスタンス変数`@mirrors`に記録してあるため，これを削除する．<br>
+ここで，ポート1とポート2はパッチを構成しており，かつポート1からポート3へのミラーリングが生成されているとする．<br>
+そして，このときの`dump`コマンドの実行結果を下に記す．
+```
+Patches:
+	1<->2
+Mirrors:
+	1->3
+```
+さらに，`delete_mirror`コマンドを実行した後の`dump`コマンドの実行結果を下に記す．<br>
+下記の例より，ポート1からポート3へのミラーリングの記録が`@mirrors`から削除されたことがわかる．<br>
+```
+Patches:
+	1<->2
+Mirrors:
+```
 
 
 
