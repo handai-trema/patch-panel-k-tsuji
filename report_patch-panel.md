@@ -21,9 +21,9 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 ##追加したコマンド（ボーナス点対象）
 以下３つのコマンドを追加した．
 
-###１．ポートのミラーリング
-<p>コントローラとスイッチ間のリンクID（dpid）先にあるスイッチにおいて，port_monitorから入ってくるパケットをport_monitorへミラーリングする．
-コマンドは下記の通りである．</p>
+###① ポートのミラーリング
+リンクID（`dpid`）先にあるスイッチにおいて，`port_monitor`ポートから入ってくるパケットを`port_monitor`ポートへミラーリングする．
+コマンドは下記の通りである．<br>
 ```
 ./bin/patch_panel mirror dpid port_monitor port_mirror
 ```
@@ -32,8 +32,14 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 における`create_mirror`メソッドを呼び出し，下記の順で処理する．
 1. `add_mirror_entry`メソッドを呼び出す．
 <p>フローテーブルにMirroringを実現するルールを追加する．
-このとき，</p>
+具体的なルールは，port_monitorが所属するパッチ`port_out`を`@patches`から取得し，`port_monitor`からのPacketInに対しては`port_out`および`port_mirror`へフォワーディングする．</p>
+2. `@mirrors`へミラーリングを記録する．
+[lib/patch_panel.rb](lib/patch_panel.rb)
+の`start`メソッドにおいてインスタンス変数`@mirrors`（ハッシュ）を宣言し，`@patches`
+と同様に，`add_mirror_entry`メソッドによって実現したミラーをリスト構造として記録する．
 
+###② パッチとポートミラーリングの一覧
+リンクID（`dpid`）先にあるスイッチにおいて，
 
 
 ##関連リンク
