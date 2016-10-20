@@ -29,7 +29,7 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 ```
 このコマンドは
 [lib/patch_panel.rb](lib/patch_panel.rb)
-における`create_mirror`メソッドを呼び出し，下記の順で処理する．
+における`create_mirror`メソッドを呼び出し，下記の順で処理する．<br>
 1. `add_mirror_entry`メソッドを呼び出す．
 フローテーブルにMirroringを実現するルールを追加する．
 具体的なルールは，port_monitorが所属するパッチ`port_out`を`@patches`から取得し，`port_monitor`からのPacketInに対しては`port_out`および`port_mirror`へフォワーディングする．<br>
