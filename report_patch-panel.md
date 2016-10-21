@@ -44,12 +44,12 @@ Trema.trema_process('PatchPanel', options[:socket_dir]).controller.lib/patch-pan
 しかし，tremaのコマンドを入力する端末へ出力するために，
 [bin/patch_panel](bin/patch_panel)
 において出力命令を記述する必要がある．<br>
-```
-puts Trema.trema_process('PatchPanel', options[:socket_dir]).controller.lib/patch-panel.rbにおけるメソッド
-```
 そこで，下記のように出力命令を書き，
 [lib/patch_panel.rb](lib/patch_panel.rb)
 において出力情報を返すようにする．<br>
+```
+puts Trema.trema_process('PatchPanel', options[:socket_dir]).controller.lib/patch-panel.rbにおけるメソッド
+```
 
 
 
