@@ -14,7 +14,47 @@ Branch: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; develop<br>
 
 
 
+
+
+
 ##コマンドの追加方法
+コマンドは
+[bin/patch_panel](bin/patch_panel)
+において下記ブロックを追記することで追加できる．<br>
+```
+desc 'コマンドの説明'
+arg_name '引数の説明'
+command :実際のコマンド do |c|
+  c.desc 'Location to find socket files'
+  c.flag [:S, :socket_dir], default_value: Trema::DEFAULT_SOCKET_DIR
+
+  c.action do |_global_options, options, args|
+     #引数を格納したリストargsから引数を取得する．
+    Trema.trema_process('PatchPanel', options[:socket_dir]).controller.lib/patch-panel.rbにおけるメソッド
+  end
+end
+```
+このとき，
+```
+Trema.trema_process('PatchPanel', options[:socket_dir]).controller.lib/patch-panel.rbにおけるメソッド
+```
+によってコントローラのメソッドを呼び出すため，
+[lib/patch_panel.rb](lib/patch_panel.rb)
+における出力はコントローラを起動している端末において行われる．<br>
+しかし，tremaのコマンドを入力する端末へ出力するために，
+[bin/patch_panel](bin/patch_panel)
+において出力命令を記述する必要がある．<br>
+```
+puts Trema.trema_process('PatchPanel', options[:socket_dir]).controller.lib/patch-panel.rbにおけるメソッド
+```
+そこで，下記のように出力命令を書き，
+[lib/patch_panel.rb](lib/patch_panel.rb)
+において出力情報を返すようにする．<br>
+
+
+
+
+
 
 
 
